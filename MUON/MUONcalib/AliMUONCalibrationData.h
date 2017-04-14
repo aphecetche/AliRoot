@@ -144,6 +144,8 @@ public:
 
   static UInt_t PatchHVAllWasAppliedMask() { return fgkPatchHVAllWasAppliedMask; }
 
+  static Int_t StruggleTime(TObjArray& values, Float_t vlow, Float_t vhigh);
+
 protected:
   /// Not implemented
   AliMUONCalibrationData(const AliMUONCalibrationData& other);

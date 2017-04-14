@@ -27,6 +27,8 @@ public:
 
   void Plot(const char* dcsname=0x0, Bool_t withPatch=kFALSE, Bool_t plotIntermediate=kFALSE);
 
+  void PlotMCHAlias(const char* dcsalias=0x0, Bool_t withPatch=kFALSE, Bool_t plotIntermediate=kFALSE);
+
   void ReportTrips(Bool_t includeLowOnes=kFALSE);
 
   void Scan(Int_t verbose=0);

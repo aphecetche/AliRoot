@@ -241,7 +241,7 @@ void AliMUONCDB::CheckHV(Int_t runNumber, Int_t verbose)
 
   if (!rp)
   {
-    AliErrorGeneral("AliMUONCDB::CheckHV","Could not get RecoParam !!!");
+    AliErrorGeneral("AliMUONCDB","Could not get RecoParam !!!");
     return;
   }
 
@@ -277,7 +277,7 @@ void AliMUONCDB::CheckHV(Int_t runNumber, Int_t verbose)
 
     if (!de)
     {
-      AliErrorGeneral("AliMUONCDB::CheckHV",Form("Could not get detElemId from dcsAlias %s",name.Data()));
+      AliErrorGeneral("AliMUONCDB",Form("Could not get detElemId from dcsAlias %s",name.Data()));
       continue;
     }
 
@@ -314,7 +314,7 @@ void AliMUONCDB::CheckHV(Int_t runNumber, Int_t verbose)
   {
     if ( verbose > 0 || msg->String().Contains("SUMMARY") )
     {
-      AliInfoGeneral("AliMUONCDB::CheckHV",Form("RUN %09d HVchannel %s",runNumber,msg->String().Data()));
+      AliInfoGeneral("AliMUONCDB",Form("RUN %09d HVchannel %s",runNumber,msg->String().Data()));
     }
   }
 
@@ -328,7 +328,7 @@ void AliMUONCDB::CheckHV(Int_t runNumber, Int_t verbose)
     totalLog += " | ";
   }
 
-  AliInfoGeneral("AliMUONCDB::CheckHV",Form("RUN %09d %s",runNumber,totalLog.Data()));
+  AliInfoGeneral("AliMUONCDB",Form("RUN %09d %s",runNumber,totalLog.Data()));
 
   // one last loop to get the list of problematic HV channels
   nextMessage.Reset();
@@ -337,14 +337,14 @@ void AliMUONCDB::CheckHV(Int_t runNumber, Int_t verbose)
   {
     if ( msg->String().Contains("HV ") )
     {
-      AliInfoGeneral("AliMUONCDB::CheckHV",Form("     Problem at %s",msg->String().Data()));
+      AliInfoGeneral("AliMUONCDB",Form("RUN %09d Problem at %s",runNumber,msg->String().Data()));
     }
   }
 
   if (nofHVValues)
   {
     meanHVValue /= nofHVValues;
-    AliInfoGeneral("AliMUONCDB::CheckHV",Form("Mean HV for run %09d was %7.2f",runNumber,meanHVValue));
+    AliInfoGeneral("AliMUONCDB",Form("Mean HV for run %09d was %7.2f",runNumber,meanHVValue));
   }
 
   AliCDBManager::Instance()->ClearCache();

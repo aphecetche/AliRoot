@@ -74,6 +74,14 @@ namespace
       indices[i] = 1;
     }
   }
+
+  Int_t Duration(TObjArray& values)
+  {
+    AliDCSValue* first = static_cast<AliDCSValue*>(values.First());
+    AliDCSValue* last = static_cast<AliDCSValue*>(values.Last());
+
+    return (last->GetTimeStamp() - first->GetTimeStamp());
+  }
 }
 
 //_____________________________________________________________________________
@@ -208,6 +216,42 @@ Bool_t AliMUONCalibrationData::CheckHVGroup(TObjArray& values, Int_t first, Int_
   }
 
   return kTRUE;
+}
+
+//______________________________________________________________________________
+Int_t AliMUONCalibrationData::StruggleTime(TObjArray& values, Float_t vlow,
+        Float_t vhigh)
+{
+  /// Count the number of seconds the channel's voltage is between vlow and vhigh
+  Int_t struggleTime(0);
+  Int_t start(0);
+
+  AliDCSValue* last = static_cast<AliDCSValue*>(values.Last());
+
+  for ( Int_t i = 0; i < values.GetLast(); ++i )
+  {
+    AliDCSValue* vi = static_cast<AliDCSValue*>(values.UncheckedAt(i));
+    Bool_t inrange = (vi->GetFloat() > vlow && vi->GetFloat() < vhigh);
+    if (inrange && start==0)
+    {
+        // we were outside threshold range and going inside
+        // "start counting time"
+        start = vi->GetTimeStamp();
+    }
+    if (!inrange && start>0)
+    {
+        // we were within threshold range and going outside :
+        // "stop counting time"
+        struggleTime += vi->GetTimeStamp() - start;
+        start = 0;
+    }
+  }
+  if (start>0)
+  {
+      // we are still within range at the end 
+      struggleTime += last->GetTimeStamp() - start;
+  }
+  return struggleTime;
 }
 
 //______________________________________________________________________________
@@ -399,6 +443,18 @@ Bool_t AliMUONCalibrationData::PatchHVValues(TObjArray& values,
 
   */
 
+  const Float_t vlow(1250);
+  const Float_t vhigh(1500);
+  int struggleTime = StruggleTime(values,vlow,vhigh);
+  if (struggleTime>3*DELTATIME) // everything longer that 3*DELTATIME should be taken into account
+  {
+    Float_t struggleTimeFraction = struggleTime*1.0/Duration(values);
+    dryRun = kTRUE; // so we don't modify the values at all and get the relevant other messages below
+    internalMsg += Form("STRUGGLE%04d-%04d[%3.0f%%][%4d s]",
+            TMath::Nint(vlow),TMath::Nint(vhigh),struggleTimeFraction*100.0,
+            struggleTime);
+  }
+  
   AliDebugClass(1,Form("msg=%s ngroupds=%d",internalMsg.Data(),ngroups));
   AliDebugClass(1,Form("nRU %d nRD %d nStartRU %d nEndRD %d nTripRD %d nFluct %d",
                        nRU,nRD,nStartRU,nEndRD,nTripRD,nFluct));

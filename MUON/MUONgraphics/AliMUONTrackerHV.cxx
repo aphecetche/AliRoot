@@ -233,6 +233,15 @@ void AliMUONTrackerHV::HVoff(const char* logfile, const char* outputBaseName)
 
 //______________________________________________________________________________
 void
+AliMUONTrackerHV::PlotMCHAlias(const char* dcsalias, Bool_t withPatch, Bool_t plotIntermediate)
+{
+    /// Convenience method to plot a MCH dcs channel by alias
+    AliMpDCSNamer n("TRACKER");
+    Plot(n.DCSNameFromAlias(dcsalias),withPatch,plotIntermediate);
+}
+
+//______________________________________________________________________________
+void
 AliMUONTrackerHV::Plot(const char* dcsname, Bool_t withPatch, Bool_t plotIntermediate)
 {
   /// Show HV values for a given dcs name (or all if dcsname=0)
