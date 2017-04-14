@@ -236,6 +236,9 @@ void
 AliMUONTrackerHV::PlotMCHAlias(const char* dcsalias, Bool_t withPatch, Bool_t plotIntermediate)
 {
     /// Convenience method to plot a MCH dcs channel by alias
+    /// The alias must be _fully qualified_, i.e. 
+    /// starting with MchHvLv ... and ending with actual.vMon
+    /// (otherwise the DCSNameFromAlias is pointless)
     AliMpDCSNamer n("TRACKER");
     Plot(n.DCSNameFromAlias(dcsalias),withPatch,plotIntermediate);
 }
