@@ -409,6 +409,9 @@ void DrawEvolution(const char* file, bool normalized=true)
   DrawPeriod(runmin,runmax,260649,261812,0,ymax,"16n");
   DrawPeriod(runmin,runmax,262394,262858,0,ymax,"16o");
 
+  // 2017
+  DrawPeriod(runmin,runmax,268874,270000,0,ymax,"17a");
+
   Draw(f,"nbad",l,normalized);
   Draw(f,"nbadped",l,normalized);
   Draw(f,"nbadocc",l,normalized);
@@ -450,7 +453,7 @@ void MUONStatusMapEvolution(const char* runlist, const char* outfile)
     return;
   }
 
-  int year(2016);
+  int year(2017);
 
   if ( runs[0] <= 139699 ) year=2010;
 
@@ -462,10 +465,12 @@ void MUONStatusMapEvolution(const char* runlist, const char* outfile)
 
   if ( runs[0] <= 246994 ) year = 2015;
 
-  TString defaultOCDB;
+  if ( runs[0] <= 267166 ) year = 2016;
 
-  defaultOCDB.Form("local:///cvmfs/alice-ocdb.cern.ch/calibration/data/%d/OCDB",year);
+  TString defaultOCDB("raw://");
 
+  /* defaultOCDB.Form("local:///cvmfs/alice-ocdb.cern.ch/calibration/data/%d/OCDB",year); */
+  /*  */
 //  defaultOCDB.Form("alien://folder=/alice/data/%d/OCDB?cacheFold=/local/cdb",year);
 
   AliCDBManager::Instance()->SetDefaultStorage(defaultOCDB.Data());
