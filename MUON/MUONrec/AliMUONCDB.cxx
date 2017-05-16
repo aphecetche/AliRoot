@@ -98,6 +98,7 @@
 #include <TClonesArray.h>
 #include <sstream>
 #include <set>
+#include <cassert>
 
 using std::endl;
 using std::cout;
@@ -1760,9 +1761,20 @@ AliMUONCDB::ShowConfig(Bool_t withStatusMap)
     }
   }
 
-  TArrayI removed(buspatches.GetSize());
+  Int_t maxNofBusPatches = 0;
 
   TIter next(AliMpDDLStore::Instance()->CreateBusPatchIterator());
+
+  while (next())
+  {
+     ++maxNofBusPatches;
+  }
+
+  assert(maxNofBusPatches==888);
+  TArrayI removed(maxNofBusPatches);
+
+  next.Reset();
+
   AliMpBusPatch* bp;
   Int_t n(0);
   Int_t nok(0);
@@ -1770,10 +1782,13 @@ AliMUONCDB::ShowConfig(Bool_t withStatusMap)
 
   // accounting of bus patches first
 
+  std::set<int> ddls;
+
   while ( ( bp = static_cast<AliMpBusPatch*>(next())))
   {
     if ( buspatches.GetValue(bp->GetId()) )
     {
+        ddls.insert(bp->GetDdlId());
       ++nok;
     }
     else
@@ -1834,17 +1849,22 @@ AliMUONCDB::ShowConfig(Bool_t withStatusMap)
   delete[] indices;
 
   cout << endl;
-  cout << Form("Bus patches n=%3d nok=%3d nremoved=%3d",n,nok,nremoved) << endl;
 
-  cout << Form("Channels n=%6d nremoved=%6d bad=%6d bad and removed=%6d bad or removed=%6d",
+  Int_t runNumber = AliCDBManager::Instance()->GetRun();
+
+  cout << Form("RUN %06d # DDLs = %2lu/20 expected",runNumber,ddls.size()) << std::endl;
+
+  cout << Form("RUN %06d Bus patches n=%3d nok=%3d nremoved=%3d",runNumber,n,nok,nremoved) << endl;
+
+  cout << Form("RUN %06d Channels n=%6d nremoved=%6d bad=%6d bad and removed=%6d bad or removed=%6d",runNumber,
                totalNumberOfChannels,removedChannels,badChannels,badAndRemovedChannels,badOrRemovedChannels) << endl;
 
   if (totalNumberOfChannels>0)
   {
-    cout << Form("Percentage of readout channels %5.1f %%",removedChannels*100.0/totalNumberOfChannels) << endl;
+    cout << Form("RUN %06d Percentage of not readout channels %5.1f %%",runNumber,removedChannels*100.0/totalNumberOfChannels) << endl;
     if ( withStatusMap )
     {
-      cout << Form("Percentage of non useable channels (bad or removed) %5.1f %%",
+      cout << Form("RUN %06d Percentage of non useable channels (bad or removed) %5.1f %%",runNumber,
                    badOrRemovedChannels*100.0/totalNumberOfChannels) << endl;
     }
   }
