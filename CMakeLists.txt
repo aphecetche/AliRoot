@@ -526,12 +526,16 @@ else()
     DESTINATION cmake)
 
   foreach(TEST_LIB ${ALILIBSTESTED})
-    add_test(load_library_${TEST_LIB}
-      env
-      LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{LD_LIBRARY_PATH}
-      DYLD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:$ENV{DYLD_LIBRARY_PATH}
-      ROOT_HIST=0
-      root -n -l -b -q "${CMAKE_INSTALL_PREFIX}/test/load_library/LoadLib.C(\"lib${TEST_LIB}\")")
+    add_test(NAME load_library_${TEST_LIB} COMMAND
+      ${ROOTSYS}/bin/root -n -l -b -q "${CMAKE_INSTALL_PREFIX}/test/load_library/LoadLib.C(\"lib${TEST_LIB}\")")
+    list(FIND ${TEST_LIB}_LIB_DEPENDS DPMJET has_dpmjet)
+    if(${has_dpmjet} GREATER 0)
+      set(EXTRA "${DPMJET}/lib")
+    elseif()
+      set(EXTRA "")
+    endif()
+    set_property(TEST load_library_${TEST_LIB} APPEND PROPERTY ENVIRONMENT "LD_LIBRARY_PATH=${CMAKE_INSTALL_PREFIX}/lib:${ALIROOT}/lib:${EXTRA}")
+    set_property(TEST load_library_${TEST_LIB} APPEND PROPERTY ENVIRONMENT "ROOT_HIST=0")
   endforeach()
 
   # Install test directory
