@@ -20,7 +20,7 @@
 /// \brief The macro writes a new GRP/CTP/Config trigger configuration file
 /// from the GRP/CTP/MUON.cfg trigger descriptor, corresponding to a
 /// run where only MUON is used as a trigger detector.
-/// 
+///
 /// The macro writes a new GRP/CTP/Config trigger configuration file
 /// from the GRP/CTP/MUON.cfg trigger descriptor, corresponding to a
 /// run where only MUON is used as a trigger detector. The
@@ -34,8 +34,8 @@
 /// step, having no more knowledge of the Config.C file.
 /// This has to be done before starting the simulations, only once after
 /// the installation of AliRoot:
-/// 
-/// <pre> 
+///
+/// <pre>
 ///.L $ALICE_ROOT/MUON/macros/UpdateCDBCTPConfig.C+
 /// UpdateCDBCTPConfig(1);    // just checking
 /// UpdateCDBCTPConfig();     // update the GRP/CDB entry
@@ -45,34 +45,33 @@
 /// this case, at the reconstruction phase error messages will appear (without
 /// breaking the reconstruction): \n
 ///
-/// E-AliCentralTrigger::CheckTriggeredDetectors: Wrong cluster mask from trigger
-/// classes (7ffff), expecting (20c00)! Loaded trigger configuration is possibly wrong!
+/// E-AliCentralTrigger::CheckTriggeredDetectors: Wrong cluster mask from
+/// trigger classes (7ffff), expecting (20c00)! Loaded trigger configuration is
+/// possibly wrong!
 ///
 /// \author B. Vulpescu, LPC Clermont-Ferrand
 
-#if !defined(__CINT__) || defined(__MAKECINT__)
 #include "ARVersion.h"
-#include "AliCDBManager.h"
-#include "AliCDBStorage.h"
 #include "AliCDBEntry.h"
 #include "AliCDBId.h"
+#include "AliCDBManager.h"
 #include "AliCDBMetaData.h"
+#include "AliCDBStorage.h"
+#include "AliSimulation.h"
 #include "AliTriggerConfiguration.h"
 #include "AliTriggerUtils.h"
-#include "AliSimulation.h"
 #include <TROOT.h>
 #include <TString.h>
 #include <TSystem.h>
-#endif
 
 void UpdateCDBCTPConfig(Bool_t check = false) {
-  
+
   // AliSimulation object must exist, as it is used via AliMC
   // which is used in AliTriggerUtils::CheckConfiguration()
   AliSimulation sim;
 
-  AliCDBManager* cdb = AliCDBManager::Instance();
-  cdb->SetDefaultStorage("local://$ALICE_ROOT/OCDB");
+  AliCDBManager *cdb = AliCDBManager::Instance();
+  cdb->SetDefaultStorage("local://$ALIROOT_OCDB_ROOT/OCDB");
   cdb->SetRun(0);
 
   if (check) {
@@ -80,23 +79,24 @@ void UpdateCDBCTPConfig(Bool_t check = false) {
     AliCDBEntry *entry;
     entry = cdb->Get("GRP/CTP/Config");
     AliCDBMetaData *md = entry->GetMetaData();
-    Printf("AliRoot version: %s",md->GetAliRootVersion());
-    Printf("Comment: %s ",md->GetComment());
-    Printf("Responsible: %s ",md->GetResponsible());
+    Printf("AliRoot version: %s", md->GetAliRootVersion());
+    Printf("Comment: %s ", md->GetComment());
+    Printf("Responsible: %s ", md->GetResponsible());
     return;
   }
 
-  const Char_t* alice = gSystem->Getenv("ALICE_ROOT");
+  const Char_t *alice = gSystem->Getenv("ALICE_ROOT");
 
   // construct the CTP configuration starting from GRP/CTP/<CTPcfg>.cfg file
 
   // Config.C detector configuration
-  TString cfgFile(Form("%s/MUON/macros/Config.C",alice));
+  TString cfgFile(Form("%s/MUON/macros/Config.C", alice));
 
   // MUON.cfg trigger configuration
-  TString cfgCTP(Form("%s/GRP/CTP/MUON.cfg",alice));
+  TString cfgCTP(Form("%s/GRP/CTP/MUON.cfg", alice));
 
-  AliTriggerConfiguration *trconfig = AliTriggerConfiguration::LoadConfiguration(cfgCTP);
+  AliTriggerConfiguration *trconfig =
+      AliTriggerConfiguration::LoadConfiguration(cfgCTP);
   if (!trconfig) {
     Printf("Invalid cfg file! Exiting...");
     return;
@@ -104,27 +104,30 @@ void UpdateCDBCTPConfig(Bool_t check = false) {
 
   // check if Config.C is compatible with the trigger configuration requested
   AliTriggerUtils tru;
-  if (!tru.CheckConfiguration(cfgFile,trconfig)) {
-    Printf("CTP configuration is incompatible with the specified Config.C and AliRoot version! Exiting...");
+  if (!tru.CheckConfiguration(cfgFile, trconfig)) {
+    Printf("CTP configuration is incompatible with the specified Config.C and "
+           "AliRoot version! Exiting...");
     return;
   }
 
   // put the new trigger configuration "trconfig" in the GRP/CTP/Config
 
-  AliCDBId id("GRP/CTP/Config",0,AliCDBRunRange::Infinity());
-  AliCDBMetaData *md= new AliCDBMetaData();
+  AliCDBId id("GRP/CTP/Config", 0, AliCDBRunRange::Infinity());
+  AliCDBMetaData *md = new AliCDBMetaData();
 
   // ROOT and AliRoot versions
-  const char* rootv = gROOT->GetVersion();
+  const char *rootv = gROOT->GetVersion();
   TString av(ALIROOT_VERSION);
   TString revnum(ALIROOT_REVISION);
 
-  Printf("root version: %s.  AliRoot %s, revision number %s",rootv,av.Data(),revnum.Data());
+  Printf("root version: %s.  AliRoot %s, revision number %s", rootv, av.Data(),
+         revnum.Data());
 
   md->SetAliRootVersion(av.Data());
-  md->SetComment(Form("Default CTP configuration for MUON mode produced with root version %s and AliRoot version %s revision %s ",rootv,av.Data(),revnum.Data()));
+  md->SetComment(Form("Default CTP configuration for MUON mode produced with "
+                      "root version %s and AliRoot version %s revision %s ",
+                      rootv, av.Data(), revnum.Data()));
 
-  AliCDBStorage* storage = cdb->GetStorage("local://$ALICE_ROOT/OCDB");
-  storage->Put(trconfig,id,md);
-  
+  AliCDBStorage *storage = cdb->GetStorage("local://$ALIROOT_OCDB_ROOT/OCDB");
+  storage->Put(trconfig, id, md);
 }

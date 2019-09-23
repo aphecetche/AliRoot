@@ -1,2 +1,5 @@
 
 Unix.*.Root.MacroPath:      .:$(ALICE_ROOT)/macros:$(ALICE_ROOT)/MUON/macros
+
+Unix.*.Root.DynamicPath: /Users/laurent/alice/run2/sw/osx_x86-64/AliRoot/0c30ea3be0_ROOT6-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/AliEn-ROOT-Legacy/0.0.7-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/Vc/1.4.1-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/GEANT4_VMC/v3-6-p3-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/vgm/v4-4-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/GEANT4/v10.4.2-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/GEANT3/v2-7-1/lib64:/Users/laurent/alice/run2/sw/osx_x86-64/DPMJET/v3.0.5-alice4-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/ROOT/v6-16-00-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/Python-modules/1.0-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/GSL/v1.16-1/lib:/Users/laurent/alice/run2/sw/osx_x86-64/AliEn-Runtime/v2-19-le-1/lib
+
