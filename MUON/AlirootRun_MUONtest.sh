@@ -177,7 +177,8 @@ if [ ! -f $ALICE_ROOT/OCDB/GRP/CTP/Config/Run0_999999999_v0_s1.root ]; then
   echo "Updating GRP CTP config  ..."
 
   aliroot -l -b >$OUTDIR/updateCDBCTPConfig.out 2>&1 <<EOF
-  gSystem->Load("libpythia6_4_28");
+  gSystem->Load("libgeant321");
+  gSystem->Load("libpythia6");
   .L UpdateCDBCTPConfig.C++g
   UpdateCDBCTPConfig();
   .q
@@ -196,7 +197,7 @@ if [ "$SIMULATION" -eq 1 ]; then
   echo "Running simulation  ..."
 
   aliroot -l -b >$OUTDIR/testSim.out 2>&1 <<EOF
-  gSystem->Load("libpythia6_4_28");
+  gSystem->Load("libpythia6");
   .x runSimulation.C($SEED,$NEVENTS,"$SIMCONFIG","$EMBEDWITH",$REALISTIC) 
 .q
 EOF

@@ -1,3 +1,2 @@
 
 Unix.*.Root.MacroPath:      .:$(ALICE_ROOT)/macros:$(ALICE_ROOT)/MUON/macros
-Unix.*.Root.DynamicPath: .:$(ALICE_ROOT)/lib:$(GEANT3_ROOT)/lib

@@ -1,0 +1,39 @@
+E-TMacOSXSystem::FindDynamicLibrary: libgeant321[.so | .dll | .dylib | .sl | .dl | .a] does not exist in .:/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib:/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib::/usr/local/lib:/usr/X11R6/lib:/usr/lib:/lib:/lib/x86_64-linux-gnu:/usr/local/lib64:/usr/lib64:/lib64:
+I-TMacOSXSystem::ACLiC: creating shared library /Users/laurent/alice/dev/AliRoot/MUON/test_out.50/./UpdateCDBCTPConfig_C.so
+I-AliQAManager::Init: AliEn classes enabled in Root. AliCDBGrid factory registered.
+I-AliCDBManager::Init: AliEn classes enabled in Root. AliCDBGrid factory registered.
+I-AliCDBLocal::QueryCDB: Querying files valid for run 0 and path "*" into CDB storage  "local:///Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/OCDB"
+I-AliCDBLocal::QueryCDB: 328 valid files found!
+I-AliTriggerUtils::CheckConfiguration: initializing gAlice with config file /Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/MUON/macros/Config.C
+     ****************************************************************
+     *                                                              *
+     *    You are running AliRoot version NewIO
+     *    The SVN version for the current program is $Id$
+     *                                                              *
+     ****************************************************************
+IncrementalExecutor::executeFunction: symbol '_ZN11TGeant3TGeoC1EPKci' unresolved while linking [cling interface function]!
+You are probably missing the definition of TGeant3TGeo::TGeant3TGeo(char const*, int)
+Maybe you need to load the corresponding shared library?
+
+ *** Break *** segmentation violation
+[/usr/lib/system/libsystem_platform.dylib] _sigtramp (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/laurent/alice/dev/AliRoot/MUON/test_out.50/UpdateCDBCTPConfig_C.so] UpdateCDBCTPConfig(bool) (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::IncrementalExecutor::executeWrapper(llvm::StringRef, cling::Value*) const (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::RunFunction(clang::FunctionDecl const*, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::EvaluateInternal(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, cling::CompilationOptions, cling::Value*, cling::Transaction**, unsigned long) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::process(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, cling::Value*, cling::Transaction**, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaProcessor::process(llvm::StringRef, cling::Interpreter::CompilationResult&, cling::Value*, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] HandleInterpreterException(cling::MetaProcessor*, char const*, cling::Interpreter::CompilationResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] TCling::ProcessLine(char const*, TInterpreter::EErrorCode*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::ProcessLineNr(char const*, char const*, int*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::HandleTermInput() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TUnixSystem::CheckDescriptors() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TUnixSystem::DispatchOneEvent(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TSystem::InnerLoop() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TSystem::Run() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TApplication::Run(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::Run(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/bin/aliroot] main /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/ALIROOT/aliroot.cxx:0
+[/usr/lib/system/libdyld.dylib] start (no debug info)

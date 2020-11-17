@@ -1,0 +1,55 @@
+I-AliQAManager::Init: AliEn classes enabled in Root. AliCDBGrid factory registered.
+I-AliSimulation::SetRunQA: QA will be done on "MUON" for "Hits SDigits Digits"
+
+I-AliSimulation::ProcessEnvironmentVars: Processing environment variables
+I-AliSimulation::ProcessEnvironmentVars: Seed for random number generation = 1234567 
+I-AliSimulation::ProcessEnvironmentVars: Run number = -1
+I-AliSimulation::Run: fRunHLT is set to "libAliHLTMUON.so chains=dHLT-sim", no attempt to extract HLT mode from GRP will be done
+I-AliCDBManager::Init: AliEn classes enabled in Root. AliCDBGrid factory registered.
+W-AliSimulation::InitCDB: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+W-AliSimulation::InitCDB: Default CDB storage not yet set !!!!
+W-AliSimulation::InitCDB: Setting it now to: local://$ALICE_ROOT/OCDB
+W-AliSimulation::InitCDB: !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+W-AliSimulation::InitRunNumber: Run number not yet set !!!! Setting it now to: 0
+I-AliCDBLocal::QueryCDB: Querying files valid for run 0 and path "*" into CDB storage  "local:///Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/OCDB"
+I-AliCDBLocal::QueryCDB: 328 valid files found!
+I-AliCDBManager::Print: Run number = 0; Cache is ACTIVE; Number of active storages: 1
+	*** Default Storage URI: "local:///Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/OCDB"
+
+I-AliSimulation::RunSimulation: initializing gAlice with config file /Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/MUON/macros/Config.C
+     ****************************************************************
+     *                                                              *
+     *    You are running AliRoot version NewIO
+     *    The SVN version for the current program is $Id$
+     *                                                              *
+     ****************************************************************
+IncrementalExecutor::executeFunction: symbol '_ZN11TGeant3TGeoC1EPKci' unresolved while linking [cling interface function]!
+You are probably missing the definition of TGeant3TGeo::TGeant3TGeo(char const*, int)
+Maybe you need to load the corresponding shared library?
+F-AliSimulation::RunSimulation: execution of config file "/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/MUON/macros/Config.C" failed with error 1
+F-AliSimulation::RunSimulation: aborting execution due to AliFatal
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib/libSTEER.so] AliSimulation::RunSimulation(int) /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/STEER/STEER/AliSimulation.cxx:1123
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib/libSTEER.so] AliSimulation::Run(int) /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/STEER/STEER/AliSimulation.cxx:707
+[<unknown binary>] (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::IncrementalExecutor::executeWrapper(llvm::StringRef, cling::Value*) const (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::RunFunction(clang::FunctionDecl const*, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::EvaluateInternal(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, cling::CompilationOptions, cling::Value*, cling::Transaction**, unsigned long) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaSema::actOnxCommand(llvm::StringRef, llvm::StringRef, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaParser::isXCommand(cling::MetaSema::ActionResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaParser::isCommand(cling::MetaSema::ActionResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaProcessor::process(llvm::StringRef, cling::Interpreter::CompilationResult&, cling::Value*, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] HandleInterpreterException(cling::MetaProcessor*, char const*, cling::Interpreter::CompilationResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] TCling::ProcessLine(char const*, TInterpreter::EErrorCode*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] TCling::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TApplication::ExecuteFile(char const*, int*, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::ProcessLineNr(char const*, char const*, int*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::HandleTermInput() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TUnixSystem::CheckDescriptors() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TUnixSystem::DispatchOneEvent(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TSystem::InnerLoop() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TSystem::Run() (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TApplication::Run(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::Run(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/bin/aliroot] main /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/ALIROOT/aliroot.cxx:0
+[/usr/lib/system/libdyld.dylib] start (no debug info)

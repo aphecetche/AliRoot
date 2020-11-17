@@ -1,0 +1,36 @@
+
+Processing runReconstruction.C(1234567,"/Users/laurent/alice/dev/AliRoot/MUON/test_out.50/raw.root","SAVEDIGITS",kFALSE)...
+I-AliCDBManager::Init: AliEn classes enabled in Root. AliCDBGrid factory registered.
+ *** TDatabasePDG::AddParticle: particle with PDGcode=3124 already defined
+ *** TDatabasePDG::AddAntiParticle: can't redefine parameters
+I-AliReconstruction::SetRunQA: QA will be done on "MUON" for "Raws DigitsR RecPoints ESDs"
+
+I-AliQAv1::SetQARefStorage: AliQAv1::SetQARefDir: QA references are in  local://$ALICE_ROOT/QAref
+
+I-AliRawReader::Create: Creating raw-reader in order to read raw-data file: /Users/laurent/alice/dev/AliRoot/MUON/test_out.50/raw.root
+E-TFile::TFile: file /Users/laurent/alice/dev/AliRoot/MUON/test_out.50/raw.root does not exist
+E-AliRawReaderRoot::AliRawReaderRoot: could not open file /Users/laurent/alice/dev/AliRoot/MUON/test_out.50/raw.root
+E-AliRawReader::Create: Raw-reader is invalid - check the input URI (/Users/laurent/alice/dev/AliRoot/MUON/test_out.50/raw.root)
+F-AliReconstruction::InitRawReader: Can not create raw-data reader ! Exiting...
+F-AliReconstruction::InitRawReader: aborting execution due to AliFatal
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib/libSTEER.so] AliReconstruction::InitRawReader(char const*) /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/STEER/STEER/AliReconstruction.cxx:0
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib/libSTEER.so] AliReconstruction::InitRun(char const*) /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/STEER/STEER/AliReconstruction.cxx:1645
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/lib/libSTEER.so] AliReconstruction::Run(char const*) /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/STEER/STEER/AliReconstruction.cxx:1538
+[<unknown binary>] (no debug info)
+[<unknown binary>] (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::IncrementalExecutor::executeWrapper(llvm::StringRef, cling::Value*) const (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::RunFunction(clang::FunctionDecl const*, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::Interpreter::EvaluateInternal(std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> > const&, cling::CompilationOptions, cling::Value*, cling::Transaction**, unsigned long) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaSema::actOnxCommand(llvm::StringRef, llvm::StringRef, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaParser::isXCommand(cling::MetaSema::ActionResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaParser::isCommand(cling::MetaSema::ActionResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] cling::MetaProcessor::process(llvm::StringRef, cling::Interpreter::CompilationResult&, cling::Value*, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] HandleInterpreterException(cling::MetaProcessor*, char const*, cling::Interpreter::CompilationResult&, cling::Value*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] TCling::ProcessLine(char const*, TInterpreter::EErrorCode*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCling.6.20.02.so] TCling::ProcessLineSynch(char const*, TInterpreter::EErrorCode*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libCore.6.20.02.so] TApplication::ExecuteFile(char const*, int*, bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::ProcessLineNr(char const*, char const*, int*) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/ROOT/v6-20-02-alice7-1/lib/libRint.6.20.02.so] TRint::Run(bool) (no debug info)
+[/Users/laurent/alice/dev/sw/osx_x86-64/AliRoot/0_O2-1/bin/aliroot] main /Users/laurent/alice/dev/sw/SOURCES/AliRoot/0_O2/0/ALIROOT/aliroot.cxx:0
+[/usr/lib/system/libdyld.dylib] start (no debug info)
+[<unknown binary>] (no debug info)
